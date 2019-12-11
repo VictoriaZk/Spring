@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/momentjs/2.24.0/moment.js"></script>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="m-5">
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success pb-2" href="/">home</a>
+    </div>
+    <div class="d-flex justify-content-center mt-1">
+        <a class="btn btn-success pb-2" href="/position">Positions</a>
+    </div>
+    <div class="d-flex justify-content-center mt-1">
+        <a class="btn btn-success pb-2" href="/position/add">add position</a>
+    </div>
+    <h2>Position</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Short name</th>
+            <th>Cipher</th>
+            <th>Lower discharge</th>
+            <th>Upper discharge</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="position : ${positions}">
+            <td th:text="${position.name}">name</td>
+            <td th:text="${position.shortName}">short name</td>
+            <td th:text="${position.cipher}">cipher</td>
+            <td th:text="${position.lowerDischarge}">lower</td>
+            <td th:text="${position.upperDischarge}">upper</td>
+            <td>
+                <a th:href="@{/position/{id}/delete(id=${position.id})}">delete</a>
+                <a th:href="@{/position/{id}/update(id=${position.id})}">update</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
